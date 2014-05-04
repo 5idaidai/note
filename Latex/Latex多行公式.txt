@@ -1,0 +1,54 @@
+今天想要用latex输入多行公式，参照LATEX一书中的
+\begin{eqnarray}
+equation\\
+equation\\
+...\\
+equation
+\end{eqnarray}
+发现无法左对齐，对我当中的省略号造成了很不好的影响，因此在网上搜了下多行公式左对齐的方法，解决了问题，同时也贴在这里供大家参考。
+
+Latex输入多行公式且左对齐的方法如下： 
+3.4比较常用
+
+1.
+\begin{align}
+& 公式1  \label{eq:rel1} \\
+& 公式2  \label{eq:rel2}
+\end{align}
+这样得到的结果是每个子公式都会有编号；
+
+2.
+\begin{flalign}
+\begin{split}
+\hspace{3mm}%或空格，视左边空出的距离而定
+公式1 \label{eq:rel1}
+\hspace{}公式2 \label{eq:rel2}
+……
+\hspace{}公式n \label{eq:reln}
+\end{split}&
+\end{flalign}
+这样得到的结果只有一个编号，位于大公式的中间位置
+引用时：\eqref{eq:rel2},上面的\label{eq:rel2}必须加在每个公式后面
+从网上搜了解决办法，发现都没有办法左对齐，问题就出在要在公式的前面加上    "间距 &"
+
+
+
+
+
+3.
+一列公式左对齐且只有一个编号在中间位置
+有下面的简单方法
+\begin{equation}\label{eq:12}
+\begin{split}
+& 公式1 \\
+& 公式2 \\
+\end{split}
+\end{equation}
+
+
+4.
+一列公式左对齐且无编号
+\begin{align*}
+& equation 1 \\
+& equation 2 \\
+\end{align*}

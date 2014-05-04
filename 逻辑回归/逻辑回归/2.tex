@@ -1,0 +1,87 @@
+﻿\documentclass[12pt]{report} 
+
+\usepackage{fontspec}
+\usepackage[hidelinks]{hyperref}
+
+\usepackage{xunicode}
+\usepackage[no-sscript]{xltxtra}
+
+\usepackage[babel=false]{csquotes}
+\usepackage{polyglossia}
+\setdefaultlanguage{french}
+\setotherlanguages{german,english,greek,polish,russian}
+\usepackage[backend=biber,style=verbose-ibid,citepages=suppress,sorting=nty]{biblatex}
+
+\setmainfont[Mapping=tex-text]{Linux Libertine}
+
+\usepackage{setspace}
+\usepackage{acronym}
+\usepackage{tocloft}
+
+\usepackage{filecontents}
+
+\begin{filecontents}{fortest.bib}
+
+@Book{Kaluzh,
+title = {Nowy sobór. Natura, historia przygotowań, tematyka},
+author = {Tadeusz Kałużny},
+publisher = {wydawnictwo księży Sercanów},
+year = {2008},
+location = {Krakóv},
+}
+
+
+@Book{AlKarapan,
+author = {Αλέξανδρος Κ. Καραπαναγοπούλου},
+title = {Η Μεγάλη Σ. της ΟΑΕ},
+publisher = {Auto-édition},
+year = {1990/1998},
+volumes = {6},
+location = {Αθήνα},
+shorthand = {MS-OAE},
+}
+
+
+@Misc{Konst1923,
+title = {Πρακτικὰ καὶ ἀποφάσεις τοῦ ἐν ΚΠΣ (10 μαΐου--8 ἰουνίου 1923)},
+year = {1923},
+location = {Κωνσταντινούπολη},
+keywords = {primary}
+}
+
+@Article{Akury,
+author = {Adolf Küry},
+title = {Die Konferenz in Konstantinople},
+journal = {Internationale kirchliche Zeitschrift},
+year = {1924},
+number = {14},
+pages = {62--64}
+}
+
+@Online{Tichon1923enciclic,
+title = {\textrussian{Послание Патриарха Тихона к православному народу о реформе календаря в РПЦ}},
+date = {1923-10-01},
+urldate = {2010-10-05},
+url = {http://holyrussia.narod.ru/Tykhon_Calendar.html}
+}
+
+@Article{Echo1932,
+journal = {Échos d'Orient},
+title = {Le préconcile orthodoxe},
+author = {J. Lacombe},
+number = {31},
+year = {1932},
+pages = {239-241}
+}
+
+\end{filecontents}
+
+\addbibresource{conference.bib}
+
+
+\begin{document}
+test\footcite[331]{Kaluzh} est\footcite[23--27]{AlKarapan} test\footcite[23--27]{Konst1923} test\footcite[23--27]{Tichon1923enciclic} test\footcite[23--27]{Echo1932} test test
+
+\printbibliography
+
+\end{document}
