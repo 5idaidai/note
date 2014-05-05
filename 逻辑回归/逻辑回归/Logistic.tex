@@ -1,7 +1,8 @@
+% !Mode:: "TeX:UTF-8"
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Thin Sectioned Essay
 % LaTeX Template
-% Version 1.0 (3/8/13)
+% Version 1.0 (5/2/14)
 %
 % This template has been downloaded from:
 % http://www.LaTeXTemplates.com
@@ -10,45 +11,51 @@
 % Nicolas Diaz (nsdiaz@uc.cl) with extensive modifications by:
 % Vel (vel@latextemplates.com)
 %
+% Modifications by:
+% Utopiar (Utopiar@gs.zzu.edu.cn) In ZZUNLP
+%
 % License:
 % CC BY-NC-SA 3.0 (http://creativecommons.org/licenses/by-nc-sa/3.0/)
 %
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 %----------------------------------------------------------------------------------------
-%	PACKAGES AND OTHER DOCUMENT CONFIGURATIONS
+%	引入支持包和文档设置
 %----------------------------------------------------------------------------------------
 
-\documentclass[a4paper, 11pt, UTF8]{ctexart} % Font size (can be 10pt, 11pt or 12pt) and paper size (remove a4paper for US letter paper)
+\documentclass[a4paper, 11pt, hyperref, UTF8]{ctexart} % 字体大小 (可以设置为 10pt, 11pt or 12pt) and 纸张大小 (remove a4paper for US letter paper)，汉语支持
+%\documentclass[a4paper, 11pt]{article}
 
 \usepackage[protrusion=true,expansion=true]{microtype} % Better typography
-\usepackage{graphicx} % Required for including pictures
-\usepackage{wrapfig} % Allows in-line images
+\usepackage{graphicx} % 图片包
+\usepackage{wrapfig} % 允许图片或绕
 
-\usepackage{float}
-\usepackage{amsmath}
-\usepackage{bm}
-\usepackage{CJK}
+\usepackage{float} %图片位置
+\usepackage{amsmath} %公式
+\usepackage{bm}  %加粗
+\usepackage{CJK} %字体包
 
-\usepackage{mathpazo} % Use the Palatino font
+\usepackage[colorlinks,linkcolor=black,anchorcolor=black,citecolor=black]{hyperref}  %超链接包
+
+\usepackage{mathpazo} % 使用Palatino字体
 \usepackage[T1]{fontenc} % Required for accented characters
-\linespread{1.05} % Change line spacing here, Palatino benefits from a slight increase by default
+\linespread{1.05} % 更改行间距, Palatino字体默认改行最佳
 
 \makeatletter
-%\renewcommand\@biblabel[1]{\textbf{#1.}} % Change the square brackets for each bibliography item from '[1]' to '1.'
-\renewcommand{\@listI}{\itemsep=0pt} % Reduce the space between items in the itemize and enumerate environments and the bibliography
+%\renewcommand\@biblabel[1]{\textbf{#1.}} % 更换引用序号'[1]' 为'1.'
+\renewcommand{\@listI}{\itemsep=0pt} % 减少逐项列举项目之间的空间，并列举环境和参考书目
 
-\renewcommand{\maketitle}{ % Customize the title - do not edit title and author name here, see the TITLE block below
-\begin{flushright} % Right align
-{\LARGE\@title} % Increase the font size of the title
+\renewcommand{\maketitle}{ % 自定义标题 - 在这里并不修改标题和作者的名字
+\begin{flushleft} % 右对齐
+{\LARGE\@title} % 加大标题字体
 
-\vspace{50pt} % Some vertical space between the title and author name
+\vspace{50pt} % 标题和作者间的间距
 
-{\large\@author} % Author name
+{\large\@author} % 作者名格式
 \\\@date % Date
 
-\vspace{40pt} % Some vertical space between the author block and abstract
-\end{flushright}
+\vspace{40pt} % 作者和摘要的距离
+\end{flushleft}
 }
 
 %----------------------------------------------------------------------------------------
@@ -66,9 +73,7 @@
 %----------------------------------------------------------------------------------------
 
 \begin{document}
-
 \maketitle % Print the title section
-
 %----------------------------------------------------------------------------------------
 %	ABSTRACT AND KEYWORDS
 %----------------------------------------------------------------------------------------
@@ -76,7 +81,7 @@
 %\renewcommand{\abstractname}{Summary} % Uncomment to change the name of the abstract to something else
 
 \begin{abstract}
-Logistic回归——我们经常用一条直线对一些点进行拟合（该线成为最佳拟合直线），这个拟合过程就称作回归。利用Logistic回归进行分类的主要思想是：根据现有数据对分类边界线建立回归公式，以此进行分类。Logistic回归的一般过程为：
+Logistic回归——我们经常用一条直线对一些点进行拟合（该线成为最佳拟合直线），这个拟合过程就称作回归。\cite{harrington2012machine}利用Logistic回归进行分类的主要思想是：根据现有数据对分类边界线建立回归公式，以此进行分类。Logistic回归的一般过程为：
 
 \begin{enumerate}
 \item 收集数据：采用任意方法收集数据。
@@ -163,7 +168,7 @@ $$ \frac {\partial L(w)}{\partial w} = \sum _{i=1} ^{N} {y_ix} - \sum_{i=1}^{N}{
 
 \subsection{平方损失函数法}
 
-\paragraph{平方损失函数}通常在定义了一个模型($f(x;w_0,w_1)=w_0+w_1x$)之后，衡量一个特定模型与数据点接近程度的普遍方法是真实值与模型预测值之间的平方差。平方差可以定义为：
+\paragraph{平方损失函数}通常在定义了一个模型($f(x;w_0,w_1)=w_0+w_1x$)之后，衡量一个特定模型与数据点接近程度的普遍方法是真实值与模型预测值之间的平方差\cite{rogers2011first}。平方差可以定义为：
 
 $$ {(t_n - f( x_n; w_0, w_1 ))}^2 $$
 这个表达式就称之为\textbf{平方损失函数}。
@@ -225,34 +230,37 @@ $$ \frac{\partial{\pounds}}{\partial{w}} = \frac{2}{N}\bm{X}^T\bm{Xw}-\frac{2}{N
 
 \section{最优化算法}
 
-我们可以采用梯度下降算法。
+我们可以采用梯度下降算法。(未完待续……)
+
 
 %----------------------------------------------------------------------------------------
 %	BIBLIOGRAPHY
 %----------------------------------------------------------------------------------------
 
-\begin{thebibliography}{0}
+%\begin{thebibliography}{0}
 
-\bibitem{cheng2005}
-D.~Cheng, Controllability of switched bilinear systems, \emph{IEEE Trans. on
-  Automatic Control}, 50(4): 511--515, 2005.
+%\bibitem{Harrington2012}
+%Harrington, Peter. \emph{Machine Learning in Action}. Manning Publications Co., 2012.
 
-\bibitem{cheng2005b}
-D.~Cheng, R.~Ortega, and E.~Panteley, On port controlled hamiltonian systems,
-  in \emph{Advanced Robust and Adaptive Control --- Theory and Applications},
-  D.~Cheng, Y.~Sun, T.~Shen, and H.~Ohmori, Eds. Beijing: Tsinghua University Press, 2005: 3--16.
+%\bibitem{Rogers2011}
+%Rogers, Simon, and Mark Girolami. \emph{A first course in machine learning}. CRC Press, 2011.
 
-\bibitem{hong2005}
-洪奕光，程代展. \emph{非线性系统的分析与控制}. 北京: 科学出版社, 2005.
+%\bibitem{zouxy092014}
+%zouxy09. \emph{\href{http://blog.csdn.net/zouxy09/article/details/20319673}{机器学习算法与Python实践之（七）逻辑回归（Logistic Regression）}}.  CSDN, 2014.
 
-\bibitem{sun2005}
-孙轶民，郭雷. 关于平面仿射非线性系统的全局渐近能控性, \emph{中国科学（E辑）},
-  35(8): 830--839, 2005.
+%\bibitem{Su2011}
+%苏冉旭. \emph{\href{http://hi.baidu.com/hehehehello/item/40025c33d7d9b7b9633aff87}{逻辑回归概述}}. 百度, 2011.
 
-\bibitem{zhao2005}
-赵延龙，张纪峰. 基于多值传感器的线性离散系统的鲁棒辨识, \emph{第二十四届中国控制会议论文集}, 2005: 274--278.
-\end{thebibliography}
+%\bibitem{daniel-D2013}
+%daniel-D.  \emph{\href{http://www.cnblogs.com/daniel-D/archive/2013/05/30/3109276.html}{Logistic Regression 之基础知识准备}}. cnblog, 2013.
+%\end{thebibliography}
 
+%-------------------------------------------------------------------------------------------------------
+%使用bibtex文件
+%-------------------------------------------------------------------------------------------------------
 
+\bibliographystyle{unsrt}
+
+\bibliography{Rogers}
 %-------------------------------rogers2011first---------------------------------------------------------
 \end{document}

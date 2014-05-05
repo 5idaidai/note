@@ -1,7 +1,8 @@
+% !Mode:: "TeX:UTF-8"
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Thin Sectioned Essay
 % LaTeX Template
-% Version 1.0 (3/8/13)
+% Version 1.0 (5/2/14)
 %
 % This template has been downloaded from:
 % http://www.LaTeXTemplates.com
@@ -10,46 +11,51 @@
 % Nicolas Diaz (nsdiaz@uc.cl) with extensive modifications by:
 % Vel (vel@latextemplates.com)
 %
+% Modifications by:
+% Utopiar (Utopiar@gs.zzu.edu.cn) In ZZUNLP
+%
 % License:
 % CC BY-NC-SA 3.0 (http://creativecommons.org/licenses/by-nc-sa/3.0/)
 %
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 %----------------------------------------------------------------------------------------
-%	PACKAGES AND OTHER DOCUMENT CONFIGURATIONS
+%	引入支持包和文档设置
 %----------------------------------------------------------------------------------------
 
-\documentclass[a4paper, 11pt, UTF8]{ctexart} % Font size (can be 10pt, 11pt or 12pt) and paper size (remove a4paper for US letter paper)
+\documentclass[a4paper, 11pt, hyperref, UTF8]{ctexart} % 字体大小 (可以设置为 10pt, 11pt or 12pt) and 纸张大小 (remove a4paper for US letter paper)，汉语支持
+%\documentclass[a4paper, 11pt]{article}
 
 \usepackage[protrusion=true,expansion=true]{microtype} % Better typography
-\usepackage{graphicx} % Required for including pictures
-\usepackage{wrapfig} % Allows in-line images
+\usepackage{graphicx} % 图片包
+\usepackage{wrapfig} % 允许图片或绕
 
-\usepackage{float}
-\usepackage{CJK}
-\usepackage{amsmath}
-\usepackage{bm}
+\usepackage{float} %图片位置
+\usepackage{amsmath} %公式
+\usepackage{bm}  %加粗
+\usepackage{CJK} %字体包
 
+\usepackage[colorlinks,linkcolor=black,anchorcolor=black,citecolor=black]{hyperref}  %超链接包
 
-\usepackage{mathpazo} % Use the Palatino font
+\usepackage{mathpazo} % 使用Palatino字体
 \usepackage[T1]{fontenc} % Required for accented characters
-\linespread{1.05} % Change line spacing here, Palatino benefits from a slight increase by default
+\linespread{1.05} % 更改行间距, Palatino字体默认改行最佳
 
 \makeatletter
-\renewcommand\@biblabel[1]{\textbf{#1.}} % Change the square brackets for each bibliography item from '[1]' to '1.'
-\renewcommand{\@listI}{\itemsep=0pt} % Reduce the space between items in the itemize and enumerate environments and the bibliography
+%\renewcommand\@biblabel[1]{\textbf{#1.}} % 更换引用序号'[1]' 为'1.'
+\renewcommand{\@listI}{\itemsep=0pt} % 减少逐项列举项目之间的空间，并列举环境和参考书目
 
-\renewcommand{\maketitle}{ % Customize the title - do not edit title and author name here, see the TITLE block below
-\begin{flushright} % Right align
-{\LARGE\@title} % Increase the font size of the title
+\renewcommand{\maketitle}{ % 自定义标题 - 在这里并不修改标题和作者的名字
+\begin{flushleft} % 右对齐
+{\LARGE\@title} % 加大标题字体
 
-\vspace{50pt} % Some vertical space between the title and author name
+\vspace{50pt} % 标题和作者间的间距
 
-{\large\@author} % Author name
+{\large\@author} % 作者名格式
 \\\@date % Date
 
-\vspace{40pt} % Some vertical space between the author block and abstract
-\end{flushright}
+\vspace{40pt} % 作者和摘要的距离
+\end{flushleft}
 }
 
 %----------------------------------------------------------------------------------------
@@ -67,9 +73,8 @@
 %----------------------------------------------------------------------------------------
 
 \begin{document}
-
 \maketitle % Print the title section
-
+text\cite{rogers2011first} text\cite{harrington2012machine}
 %----------------------------------------------------------------------------------------
 %	ABSTRACT AND KEYWORDS
 %----------------------------------------------------------------------------------------
@@ -114,7 +119,7 @@ Logistic回归——我们经常用一条直线对一些点进行拟合（该线
 \includegraphics[width=0.38\textwidth,height=0.38\textwidth]{1.png}
 \caption{线性回归}
 \end{figure}
-\paragraph{线性回归}我们举个最简单的例子，还是上面弹簧弹力与形变量之间的线性关系问题，它们之间是一元一次方程的关系，根据我们初中OR小学的知识我们可以知道：解这个方程仅仅需要一个F值和一个与之对应的x值就OK 了，可是现实中由于这些数据都是测量出来的，不可避免的会出现误差甚至的错误，那么我们就需要大量数据来预测一个较为准确的弹性系数。通常采用的方式是，定义一个代价函数，通过最小化代价函数来估计参数集；或者定义代价函数为最大似然函数，通过最大化似然函数来估计参数集。
+\paragraph{线性回归}我们举个最简单的例子，还是上面弹簧弹力与形变量之间的线性关系问题，它们之间是一元一次方程的关系，根据我们初中OR小学的知识我们可以知道：解这个方程仅仅需要一个F 值和一个与之对应的x值就OK 了，可是现实中由于这些数据都是测量出来的，不可避免的会出现误差甚至的错误，那么我们就需要大量数据来预测一个较为准确的弹性系数。通常采用的方式是，定义一个代价函数，通过最小化代价函数来估计参数集；或者定义代价函数为最大似然函数，通过最大化似然函数来估计参数集。
 
 
 %------------------------------------------------
@@ -127,7 +132,7 @@ Logistic回归——我们经常用一条直线对一些点进行拟合（该线
 \includegraphics[width=0.38\textwidth,height=0.38\textwidth]{2.png}
 \caption{Logistic方程}
 \end{figure}
-\paragraph{Logistic方程}——直觉上，一个线性模型的输出值 y 越大，这个事件 P(Y=1|x) 发生的概率就越大。 另一方面，我们可以用事件的几率（odds）来表示事件发生与不发生的比值，假设发生的概率是 p ，那么发生的几率（odds）是 p/(1-p) ， odds 的值域是 0 到正无穷，几率越大，发生的可能性越大。将我们的直觉与几率联系起来的就是下面这个（log odds）或者是 logit 函数 (有点牵强 - -!)：
+\paragraph{Logistic方程}——直觉上，一个线性模型的输出值 y 越大，这个事件$ P(Y=1|x) $ 发生的概率就越大。 另一方面，我们可以用事件的几率（odds）来表示事件发生与不发生的比值，假设发生的概率是 p ，那么发生的几率（odds）是 $p/(1-p) $， odds 的值域是 0 到正无穷，几率越大，发生的可能性越大。将我们的直觉与几率联系起来的就是下面这个（log odds）或者是 Logistic 函数 (有点牵强 - -!)：
 $$ Log\frac{p}{1-p} =  w^T \cdot x  $$
 
 其中，$w$和$x$就为行向量。进而可以求出$p$关于$w \cdot x$的表示：
@@ -208,7 +213,7 @@ $$ \widehat{w_1} = \frac{\bar{xt} - \bar{x}\bar{t}}{\bar{x^2} - (\bar{x})^2} $$
 \begin{center}
 \begin{tabular}{c|c}
 \hline
-$f(w)$                 & $\frac{\partial{f}}{\partial{w}}$   \\ 
+$f(w)$                 & $\frac{\partial{f}}{\partial{w}}$   \\
 \hline
 $\bm{w}^T\bm{x}$       & $\bm{x}$                            \\
 %\hline
@@ -226,17 +231,37 @@ $$ \frac{\partial{\pounds}}{\partial{w}} = \frac{2}{N}\bm{X}^T\bm{Xw}-\frac{2}{N
 
 \section{最优化算法}
 
-我们可以采用梯度下降算法。
+我们可以采用梯度下降算法。(未完待续……)
+
 
 %----------------------------------------------------------------------------------------
 %	BIBLIOGRAPHY
 %----------------------------------------------------------------------------------------
 
+%\begin{thebibliography}{0}
+
+%\bibitem{Harrington2012}
+%Harrington, Peter. \emph{Machine Learning in Action}. Manning Publications Co., 2012.
+
+%\bibitem{Rogers2011}
+%Rogers, Simon, and Mark Girolami. \emph{A first course in machine learning}. CRC Press, 2011.
+
+%\bibitem{zouxy092014}
+%zouxy09. \emph{\href{http://blog.csdn.net/zouxy09/article/details/20319673}{机器学习算法与Python实践之（七）逻辑回归（Logistic Regression）}}.  CSDN, 2014.
+
+%\bibitem{Su2011}
+%苏冉旭. \emph{\href{http://hi.baidu.com/hehehehello/item/40025c33d7d9b7b9633aff87}{逻辑回归概述}}. 百度, 2011.
+
+%\bibitem{daniel-D2013}
+%daniel-D.  \emph{\href{http://www.cnblogs.com/daniel-D/archive/2013/05/30/3109276.html}{Logistic Regression 之基础知识准备}}. cnblog, 2013.
+%\end{thebibliography}
+
+%-------------------------------------------------------------------------------------------------------
+%使用bibtex文件
+%-------------------------------------------------------------------------------------------------------
+
 \bibliographystyle{unsrt}
 
 \bibliography{Rogers}
-
-
-%----------------------------------------------------------------------------------------
-
+%-------------------------------rogers2011first---------------------------------------------------------
 \end{document}
